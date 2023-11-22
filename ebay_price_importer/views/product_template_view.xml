@@ -2,14 +2,14 @@
 
 <odoo>
 
-    <record id="action_ebay_images_importer" model="ir.actions.server">
-        <field name="name">Importar imágenes de eBay</field>
+    <record id="action_ebay_price_importer" model="ir.actions.server">
+        <field name="name">Importar precios de eBay</field>
         <field name="model_id" ref="product.model_product_template"/>
         <field name="binding_model_id" ref="product.model_product_template"/>
         <field name="state">code</field>
         <field name="code">
     if records:
-        records.action_ebay_images_importer()
+        records.action_ebay_price_importer()
         </field>
     </record>
 

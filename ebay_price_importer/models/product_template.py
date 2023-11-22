@@ -6,20 +6,11 @@ from odoo import models, fields, api
 class ProductTemplate(models.Model):
     _inherit = 'product.template'
 
+    def action_ebay_price_importer(self):
+        pricelist = self.env['product.pricelist'].search([], limit=1, order="sequence")
 
-    def action_ebay_images_importer(self):
         for record in self:
-            if len(record.ept_image_ids) > 1:
-                for image in record.ept_image_ids[1:]:
-                    image_vals = {
-                        "name": image.url,
-                        "image_1920": image.image,
-                        "product_tmpl_id": record.id,
-                    }
-                    if len(self.env["product.image"].search([("name", "=", image.url)])) == 0:
-                        self.env["product.image"].create(image_vals)
-
-            if not record.image_1920 and record.ept_image_ids:
-                record.image_1920 = record.ept_image_ids[0].image
-
-
+            for item in pricelist.item_ids:
+                if item.product_tmpl_id.id == record.id and item.compute_price == 'fixed':
+                    record.write({'list_price': item.fixed_price})
+                    break

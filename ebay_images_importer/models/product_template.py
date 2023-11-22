@@ -6,7 +6,6 @@ from odoo import models, fields, api
 class ProductTemplate(models.Model):
     _inherit = 'product.template'
 
-
     def action_ebay_images_importer(self):
         for record in self:
             if len(record.ept_image_ids) > 1:
