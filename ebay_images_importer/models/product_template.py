@@ -32,6 +32,6 @@ class ProductTemplate(models.Model):
 
             for item in pricelist.item_ids:
                 if item.product_tmpl_id.id == record.id and item.compute_price == 'fixed':
-                    record.write({'list_price': item.fixed_price})
+                    record.list_price = item.fixed_price
                     break
 
