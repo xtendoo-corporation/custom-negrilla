@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # See LICENSE file for full copyright and licensing details.
-from odoo import models, fields, api
+from odoo import models, fields, api, tools
 
 
 class ProductTemplate(models.Model):
@@ -33,7 +33,7 @@ class ProductTemplate(models.Model):
                 [("product_tmpl_id", "=", record.id)]
             )
             if ebay_product_template_ept_id:
-                record.description_sale = ebay_product_template_ept_id.description
+                record.description_sale = tools.html_sanitize(ebay_product_template_ept_id.description)
                 print("*"*80)
                 print(ebay_product_template_ept_id.description)
                 print("*"*80)
