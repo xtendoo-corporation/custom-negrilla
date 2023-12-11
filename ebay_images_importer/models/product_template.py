@@ -6,15 +6,10 @@ from odoo import models, fields, api, tools
 class ProductTemplate(models.Model):
     _inherit = 'product.template'
 
-    ebay_product_template_ept_id = fields.Many2one(
-        comodel_name='ebay.product.template.ept',
-        string='Ebay Product Template',
-        ondelete='cascade',
-        copy=False,
-    )
-
-    def action_ebay_images_importer(self):
+    def action_ebay_product_syncro(self):
         ebay_product_template_ept = self.env['ebay.product.template.ept']
+        pricelist = self.env['product.pricelist'].search([], limit=1, order="sequence")
+
         for record in self:
             if len(record.ept_image_ids) > 1:
                 for image in record.ept_image_ids[1:]:
@@ -34,9 +29,9 @@ class ProductTemplate(models.Model):
             )
             if ebay_product_template_ept_id:
                 record.description_sale = tools.html2plaintext(ebay_product_template_ept_id.description)
-                print("*"*80)
-                print(ebay_product_template_ept_id.description)
-                print(tools.html_sanitize(ebay_product_template_ept_id.description))
-                print(tools.html2plaintext(ebay_product_template_ept_id.description))
-                print("*"*80)
+
+            for item in pricelist.item_ids:
+                if item.product_tmpl_id.id == record.id and item.compute_price == 'fixed':
+                    record.write({'list_price': item.fixed_price})
+                    break
 
