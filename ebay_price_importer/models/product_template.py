@@ -14,3 +14,5 @@ class ProductTemplate(models.Model):
                 if item.product_tmpl_id.id == record.id and item.compute_price == 'fixed':
                     record.write({'list_price': item.fixed_price})
                     break
+
+
