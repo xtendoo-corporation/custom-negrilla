@@ -36,5 +36,6 @@ class ProductTemplate(models.Model):
                 record.description_sale = tools.html_sanitize(ebay_product_template_ept_id.description)
                 print("*"*80)
                 print(ebay_product_template_ept_id.description)
+                print(tools.html_sanitize(ebay_product_template_ept_id.description))
                 print("*"*80)
 
