@@ -1,6 +1,6 @@
 {
-    "name": "Ebay Images Importer",
-    "summary": "Ebay Images Importer.",
+    "name": "Ebay Product Syncronize",
+    "summary": "Ebay Product Syncronize.",
     "version": "16.0.1.0.0",
     "category": "Ebay",
     "author": "Xtendoo",
