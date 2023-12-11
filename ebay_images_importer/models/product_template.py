@@ -37,5 +37,6 @@ class ProductTemplate(models.Model):
                 print("*"*80)
                 print(ebay_product_template_ept_id.description)
                 print(tools.html_sanitize(ebay_product_template_ept_id.description))
+                print(tools.html2plaintext(ebay_product_template_ept_id.description))
                 print("*"*80)
 
