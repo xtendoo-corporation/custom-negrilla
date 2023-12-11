@@ -14,6 +14,7 @@ class ProductTemplate(models.Model):
     )
 
     def action_ebay_images_importer(self):
+        ebay_product_template_ept = self.env['ebay.product.template.ept']
         for record in self:
             if len(record.ept_image_ids) > 1:
                 for image in record.ept_image_ids[1:]:
@@ -28,9 +29,12 @@ class ProductTemplate(models.Model):
             if not record.image_1920 and record.ept_image_ids:
                 record.image_1920 = record.ept_image_ids[0].image
 
-            print("*"*80)
-            print(record.ebay_product_template_ept_id.description)
-            print("*"*80)
+            ebay_product_template_ept_id = ebay_product_template_ept.search(
+                [("product_tmpl_id", "=", record.id)]
+            )
+            if ebay_product_template_ept_id:
+                record.description_sale = ebay_product_template_ept_id.description
+                print("*"*80)
+                print(ebay_product_template_ept_id.description)
+                print("*"*80)
 
-            if record.ebay_product_template_ept_id.description:
-                record.description_sale = record.ebay_product_template_ept_id.description
