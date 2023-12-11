@@ -33,7 +33,7 @@ class ProductTemplate(models.Model):
                 [("product_tmpl_id", "=", record.id)]
             )
             if ebay_product_template_ept_id:
-                record.description_sale = tools.html_sanitize(ebay_product_template_ept_id.description)
+                record.description_sale = tools.html2plaintext(ebay_product_template_ept_id.description)
                 print("*"*80)
                 print(ebay_product_template_ept_id.description)
                 print(tools.html_sanitize(ebay_product_template_ept_id.description))
