@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <template id="negrilla_document_format.report_invoice_document"
+              inherit_id="account.report_invoice_document">
+            <xpath expr='//td[@name="account_invoice_line_name"]/span' position="replace">
+                <td name="account_invoice_line_name">
+                    <t t-if="line.product_id.detailed_type == 'product'">
+                        <t t-if="line.product_id.default_code">
+                            <span>[</span>
+                            <span t-field="line.product_id.default_code"/>
+                            <span>]</span>
+                        </t>
+                        <span t-field="line.product_id.name" t-options="{'widget': 'text'}"/>
+                    </t>
+                    <t t-else="">
+                        <span t-field="line.name" t-options="{'widget': 'text'}"/>
+                    </t>
+                </td>
+            </xpath>
+        </template>
+    </data>
+</odoo>
