@@ -3,7 +3,7 @@
     <data>
         <template id="negrilla_document_format.report_invoice_document"
               inherit_id="account.report_invoice_document">
-            <xpath expr='//td[@name="account_invoice_line_name"]/span' position="replace">
+            <xpath expr='//td[@name="account_invoice_line_name"]' position="replace">
                 <td name="account_invoice_line_name">
                     <t t-if="line.product_id.detailed_type == 'product'">
                         <t t-if="line.product_id.default_code">
@@ -18,6 +18,18 @@
                     </t>
                 </td>
             </xpath>
+            <xpath expr='//p[@name="payment_communication"]' position="replace">
+            </xpath>
+            <xpath expr='//div[@name="payment_term"]' position="replace">
+            </xpath>
+            <xpath expr='//div[@name="comment"]' position="replace">
+            </xpath>
+            <xpath expr="//div[hasclass('clearfix')]" position="after">
+                <div name="leyenda_neumaticos">
+                    <span>Para los neumáticos nuevos el plazo de garantía será el establecido por cada fabricante y para hacer valer la garantía el cliente habrá de rellenar el formulario de reclamación disponible en el taller, siendo Neumáticos La Negrilla simples intermediarios entre el cliente y el fabricante o el importador. En los casos de neumáticos de ocasión, el plazo de garantía será el fijado en la Ley 23/2003, de 10 de julio, para la venta de productos de segunda mano. No se acepta la tramitación ni la reclamación de neumáticos con desgaste no uniforme por problemas de holgura en las piezas mecánicas del sistema de dirección, ni por rotura de la banda de rodadura que se deba a un impacto u otro imprevisto en la utilización de la cubierta. No se cubren las molestias ocasionadas al cliente mientras se realizan las tareas pertinentes para la gestión de la garantía.</span>
+                </div>
+            </xpath>
+
         </template>
     </data>
 </odoo>

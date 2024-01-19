@@ -1,7 +1,7 @@
 {
     "name": "Negrilla Document Format",
     "summary": """Formatos de documentos entregados por Xtendoo""",
-    "version": "15.1.0.0",
+    "version": "16.1.0.0",
     "description": """Formatos de documentos entregados por Xtendoo""",
     "author": "Daniel Dominguez",
     "company": "Xtendoo",
@@ -15,6 +15,7 @@
     ],
     "data": [
         "views/invoice/invoice_document.xml",
+        "views/layout/external_layout_boxed.xml",
     ],
     "installable": True,
     "auto_install": False,

@@ -1,0 +1,22 @@
+<odoo>
+    <data>
+         <template
+      id="negrilla_document_format.external_layout_boxed"
+      inherit_id="web.external_layout_boxed"
+    >
+             <xpath expr="//div[hasclass('o_boxed_header')]//div[hasclass('text-end')]/div[hasclass('h4')]" position="replace">
+             </xpath>
+
+             <xpath expr="//div[3]" position="replace">
+                <div t-attf-class="footer o_boxed_footer o_company_#{company.id}_layout" style="white-space: normal!important;">
+            <div class="text-center">
+                <div t-field="company.report_footer"/>
+                <div t-if="report_type == 'pdf'">
+                    Page: <span class="page"/> / <span class="topage"/>
+                </div>
+            </div>
+        </div>
+             </xpath>
+         </template>
+    </data>
+</odoo>
