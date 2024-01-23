@@ -10,7 +10,7 @@
              <xpath expr="//div[3]" position="replace">
                 <div t-attf-class="footer o_boxed_footer o_company_#{company.id}_layout" style="white-space: normal!important;">
             <div class="text-center">
-                <div t-field="company.report_footer"/>
+                <div t-field="company.report_footer" style="font-size:0.8em;"/>
                 <div t-if="report_type == 'pdf'">
                     Page: <span class="page"/> / <span class="topage"/>
                 </div>
