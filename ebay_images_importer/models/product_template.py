@@ -24,11 +24,11 @@ class ProductTemplate(models.Model):
             if not record.image_1920 and record.ept_image_ids:
                 record.image_1920 = record.ept_image_ids[0].image
 
-            ebay_product_template_ept_id = ebay_product_template_ept.search(
-                [("product_tmpl_id", "=", record.id)]
+            ebay_product_template_ept_ids = ebay_product_template_ept.search(
+                [("product_tmpl_id", "=", record.id)],
             )
-            if ebay_product_template_ept_id:
-                record.description_sale = tools.html2plaintext(ebay_product_template_ept_id.description)
+            for ebay_product_template_ept in ebay_product_template_ept_ids:
+                record.description_sale = tools.html2plaintext(ebay_product_template_ept.description)
 
             for item in pricelist.item_ids:
                 if item.product_tmpl_id.id == record.id and item.compute_price == 'fixed':
