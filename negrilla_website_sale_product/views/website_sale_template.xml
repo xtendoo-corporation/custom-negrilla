@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="product" inherit_id="website_sale.product">
+        <xpath expr="//div[@id='product_attributes_simple']" position="after">
+            <div>
+                <table t-attf-class="o_list_table table table-sm table-hover">
+                    <thead>
+                        <tr>
+                            <th>
+                                <span>Especificaciones del producto</span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="ui-sortable text-muted">
+                        <tr>
+                            <td>
+                                <span>Id:</span>
+                                <span data-oe-field="id" data-oe-type="int" name="id" t-field="product.id"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span>Availability:</span>
+                                <span data-oe-field="availability" data-oe-type="char"
+                                      name="availability">in stock</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span>Description:</span>
+                                <span data-oe-field="description" data-oe-type="char" name="description"
+                                      t-field="product.description_sale"/>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </xpath>
+    </template>
+</odoo>
