@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
     <template id="product" inherit_id="website_sale.product">
-        <xpath expr="//div[@id='product_attributes_simple']" position="after">
+        <xpath expr="//div[@id='product_details']" position="after">
             <div>
                 <table t-attf-class="o_list_table table table-sm table-hover">
                     <thead>
