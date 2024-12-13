@@ -4,8 +4,9 @@
       id="negrilla_document_format.external_layout_boxed"
       inherit_id="web.external_layout_boxed"
     >
-             <xpath expr="//div[hasclass('o_boxed_header')]//div[hasclass('text-end')]/div[hasclass('h4')]" position="replace">
-             </xpath>
+              <xpath expr="//div[@class='mt0 h4' and @t-field='company.report_header']" position="attributes">
+                <attribute name="t-if">False</attribute>
+            </xpath>
 
              <xpath expr="//div[3]" position="replace">
                 <div t-attf-class="footer o_boxed_footer o_company_#{company.id}_layout" style="white-space: normal!important;">
